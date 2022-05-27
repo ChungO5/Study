@@ -8,7 +8,7 @@
 
 import React, {useState, useEffect} from 'react';
 import type {Node} from 'react';
-import {Text, View, Image, FlatList} from 'react-native';
+import {Text, View, Image, FlatList, StyleSheet} from 'react-native';
 
 const Data = [
   {
@@ -122,9 +122,9 @@ const App: () => Node = () => {
   const renderItem = ({item}) => (
     <View>
       <Image source={item.webImg} style={{width: 140, height: 140}}></Image>
-      <Text>{item.title}</Text>
-      <Text>{item.grade}</Text>
-      <Text>{item.writer}</Text>
+      <Text style={styles.Title}>{item.title}</Text>
+      <Text style={styles.Grade}>{item.grade}</Text>
+      <Text style={styles.Writer}>{item.writer}</Text>
     </View>
   );
 
@@ -138,5 +138,23 @@ const App: () => Node = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  Title: {
+    fontSize: 15,
+    color: 'black',
+    marginLeft: 8,
+  },
+  Grade: {
+    fontSize: 12,
+    color: 'red',
+    marginLeft: 8,
+  },
+  Writer: {
+    fontSize: 12,
+    color: 'gray',
+    marginLeft: 8,
+  },
+});
 
 export default App;
