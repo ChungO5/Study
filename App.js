@@ -7,19 +7,10 @@
  */
 
 import React, {useState, useEffect} from 'react';
-import type {Node} from 'react';
-import {
-  Text,
-  View,
-  Image,
-  FlatList,
-  StyleSheet,
-  SafeAreaView,
-  StatusBar,
-} from 'react-native';
-import Swiper from 'react-native-swiper';
-
-const Data = [
+import {Text, View, Image, FlatList, StyleSheet} from 'react-native';
+import Banner from './components/Banner';
+import BottomTab from './components/Bottomtab';
+const Data1 = [
   {
     rank: '1',
     webImg: require('./image/1.jpg'),
@@ -126,22 +117,8 @@ const Data = [
     writer: '박태준 / 김정현',
   },
 ];
-const Banner = () => {
-  return (
-    <Swiper style={styles.wrapper} showsButtons={true}>
-      <View style={styles.slide1}>
-        <Text style={styles.text}>Hello Swiper</Text>
-      </View>
-      <View style={styles.slide2}>
-        <Text style={styles.text}>Beautiful</Text>
-      </View>
-      <View style={styles.slide3}>
-        <Text style={styles.text}>And simple</Text>
-      </View>
-    </Swiper>
-  );
-};
-const App: () => Node = () => {
+
+const App = () => {
   const renderItem = ({item}) => (
     <View>
       <Image source={item.webImg} style={{width: 140, height: 140}}></Image>
@@ -153,16 +130,17 @@ const App: () => Node = () => {
 
   return (
     <View style={styles.container}>
-      <View style={{height: 200}}>
-        <Banner></Banner>
-      </View>
-      <View style={styles.container}>
-        <FlatList
-          keyExtractor={item => item.rank}
-          data={Data}
-          renderItem={renderItem}
-          numColumns={3}></FlatList>
-      </View>
+      <FlatList
+        keyExtractor={item => item.rank}
+        data={Data1}
+        renderItem={renderItem}
+        numColumns={3}
+        ListHeaderComponent={
+          <View>
+            <Banner></Banner>
+          </View>
+        }></FlatList>
+      <View></View>
     </View>
   );
 };
@@ -186,30 +164,11 @@ const styles = StyleSheet.create({
     color: 'gray',
     marginLeft: 8,
   },
-
   wrapper: {height: 200},
-  slide1: {
+  slide: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#9DD6EB',
-  },
-  slide2: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#97CAE5',
-  },
-  slide3: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#92BBD9',
-  },
-  text: {
-    color: '#000',
-    fontSize: 30,
-    fontWeight: 'bold',
   },
 });
 
