@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, View, FlatList, Image, StyleSheet} from 'react-native';
-import Banner from './Banner';
-import Data from '../Data.json';
+import Banner from '../Banner';
+import Data from '../../Data.json';
 
 const Data1 = Data.Data;
 
